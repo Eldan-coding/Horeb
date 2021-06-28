@@ -1,0 +1,10 @@
+.mainContainer{
+    padding: 3rem;
+    background: linear-gradient(to top, white, #3d7ed4) 
+}
+
+div p{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: larger;
+    color: black;
+}
