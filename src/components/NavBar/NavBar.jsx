@@ -7,10 +7,10 @@ const NavBar = () => {
         <nav>
             <h1>Horeb</h1>
             <ul>
-                <li>Inicio</li>
-                <li>Productos</li>
-                <li>Nosotros</li>
-                <li>Contactenos</li>
+                <a href=""><li>Inicio</li></a>
+                <a href=""><li>Productos</li></a>
+                <a href=""><li>Nosotros</li></a>
+                <a href=""><li>Contactenos</li></a>
             </ul>
             <CartWidget/>
         </nav>
