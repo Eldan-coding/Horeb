@@ -1,0 +1,33 @@
+input{
+    color: black;
+    width: 100px;
+    text-align: center;
+} 
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.controles{
+    display: flex;
+    justify-content: center;
+}
+
+.control{
+    width: 32px;
+}
+
+.control:hover{
+    opacity: 0.6;
+}
+
+.control:active{
+    transform: translate(0,2px);
+}
