@@ -5,7 +5,7 @@ import cart from '../../imagenes/shopping-cart.png';
 const CartWidget = () => {
     return(
         <div>
-        <img src={cart} alt="" />
+            <img className="imgCar" src={cart} alt="" />
         </div>
     );
 };
