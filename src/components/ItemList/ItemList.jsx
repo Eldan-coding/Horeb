@@ -3,7 +3,7 @@ import Item from '../Item/Item'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
-const ItemList = (props) => {
+const ItemList = () => {
     
     const [listaItems, setListaItems] = useState([]);
 

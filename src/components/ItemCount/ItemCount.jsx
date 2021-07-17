@@ -18,9 +18,9 @@ const ItemCount = (props) => {
             d=0;
             alert("Valores no validos");
     }else{
-        if(auxInicio==auxstock && auxstock>1){
+        if(auxInicio===auxstock && auxstock>1){
             d=0;
-        }else if (auxInicio==auxstock && auxstock==1){
+        }else if (auxInicio===auxstock && auxstock===1){
             i=0;
             d=0;
         }else if(auxInicio==1){

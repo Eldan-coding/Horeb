@@ -2,7 +2,6 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    color: azure;
 }
 
 .mynav{
@@ -21,6 +20,7 @@
     align-items: center;
 
     height: 5rem;
+    color: azure !important;
 }
 
 ul{
@@ -31,5 +31,10 @@ ul{
     width: 60%;
 
     list-style: none;
+}
+
+li{
+    color: azure !important;
+    
 }
 
