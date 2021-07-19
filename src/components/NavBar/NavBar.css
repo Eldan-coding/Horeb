@@ -20,6 +20,9 @@
     align-items: center;
 
     height: 5rem;
+}
+
+h1{
     color: azure !important;
 }
 
@@ -35,6 +38,5 @@ ul{
 
 li{
     color: azure !important;
-    
 }
 

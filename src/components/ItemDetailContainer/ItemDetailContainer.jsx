@@ -2,35 +2,32 @@ import React, {useState} from "react";
 import ItemDetail from '../ItemDetail/ItemDetail'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Modal from 'react-bootstrap/Modal';
+import { useParams } from "react-router";
+import {Procesadores} from '../../Items.json';
 
-
-const ItemDetailContainer = ({CPU}) => {
-    
-    const array = [];
-    const [Articulo, setArticulo] = useState([]);
-    array.push(CPU);
+const ItemDetailContainer = () => {
+    const {id} = useParams();
+    const [Articulos, setArticulos] = useState([]);
 
     const getArticulo=()=>{
         return new Promise((resolve,reject) => {
             setTimeout(() => {
-                resolve(array);
+                resolve(Procesadores);
             }, 2000);
         })
     };
 
-    getArticulo().then((resultado) => setArticulo(resultado));
-    console.log(Articulo);
+    getArticulo().then((resultado) => setArticulos(resultado));
 
+    
     return(
-        <div>
-            <Modal.Header closeButton>
-            <Modal.Title>{CPU.titulo}</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-                {Articulo.map(uno => (
+        <div className="w-50 mx-auto p-5 mt-4">
+                {Articulos.map(uno => {
+                    return id==uno.id ? 
                     <ItemDetail UNO={uno} key={uno.id}/>
-                ))}
-            </Modal.Body>
+                        :
+                        <></>                    
+                })}
         </div>
     );
 };
