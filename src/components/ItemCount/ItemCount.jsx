@@ -3,12 +3,10 @@ import './ItemCount.css';
 import minus from '../../imagenes/minus.png';
 import plus from '../../imagenes/plus.png';
 
-const ItemCount = (props) => {
+const ItemCount = ({inicio, stock, cambiarCount, count}) => {
     //variables auxiliares para el stock y el inicio
-    let auxInicio=parseInt(props.inicio);
-    let auxstock=parseInt(props.stock);
-
-    const [count, setCount] = useState(auxInicio);
+    let auxInicio=parseInt(inicio);
+    let auxstock=parseInt(stock);
 
     let i=1;
     let d=1;
@@ -44,14 +42,14 @@ const ItemCount = (props) => {
 
     const addOne = () => {
         if(swAdd==1){
-            setCount(count+1);
+            cambiarCount(count+1);
             validarAdd();
         }
     }
 
     const removeOne = () => {
         if(swRemove==1){
-            setCount(parseInt(count)-1);
+            cambiarCount(parseInt(count)-1);
             validarRemove();
         }
     }
@@ -60,7 +58,9 @@ const ItemCount = (props) => {
     
     return(
         <div className="controles">
-            <img id="I" className="control" onClick={removeOne} src={minus} alt=""/><input type="number" value={count}></input><img id="D" className="control"  onClick={addOne} src={plus} alt=""/>
+            <img id="I" className="control" onClick={removeOne} src={minus} alt=""/>
+            <input type="number" value={count}></input>
+            <img id="D" className="control"  onClick={addOne} src={plus} alt=""/>
         </div>
     );
 };
