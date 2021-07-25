@@ -1,11 +1,17 @@
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import ItemDetail from '../ItemDetail/ItemDetail'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Modal from 'react-bootstrap/Modal';
 import { useParams } from "react-router";
 import {Procesadores} from '../../Items.json';
+import { CartContext } from "../../services/CartContext";
+import { Redirect } from "react-router-dom";
 
 const ItemDetailContainer = () => {
+    //From Cartcontext:
+    const {buscarItem} = useContext(CartContext);
+
+
     const {id} = useParams();
     const [Articulos, setArticulos] = useState([]);
 
@@ -23,10 +29,17 @@ const ItemDetailContainer = () => {
     return(
         <div className="w-50 mx-auto p-5 mt-4">
                 {Articulos.map(uno => {
-                    return id==uno.id ? 
-                    <ItemDetail UNO={uno} key={uno.id}/>
-                        :
-                        <></>                    
+                            return id==uno.id && 
+                                <>
+                                {buscarItem(uno.id) ? (
+                                    <>
+                                    {alert("Articulo ya incluido en el carrito")}
+                                    <Redirect to="/"/>
+                                    </>
+                                ):(
+                                    <ItemDetail UNO={uno} key={uno.id}/>
+                                )}
+                                </>             
                 })}
         </div>
     );
