@@ -15,7 +15,10 @@ const NavBar = () => {
                 <a href="#"><li>Nosotros</li></a>
                 <a href="#"><li>Contactenos</li></a>
             </ul>
-            <CartWidget/>
+            
+            <Link to="/Cart">
+                <CartWidget/>
+            </Link>
         </nav>
     );
 };

@@ -5,17 +5,27 @@ import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { CartContext } from "../../services/CartContext";
 
-const ItemDetail = ({UNO}) => {
+const ItemDetail = ({UNO, inicio}) => {
     //From Cartcontext:
-    const {addItem} = useContext(CartContext);
+    const {addItem, buscarItem, editItem, setCartCount, cartCount} = useContext(CartContext);
 
-    const [count, setCount] = useState(1);
+    const [count, setCount] = useState(inicio);
    
     const [comprar, setComprar] = useState(false);
 
     const cambiarEstadoCompra = () => setComprar(!comprar);
 
-    const agregarACarrito = () => addItem({ ...UNO,cantidad: count });
+    const agregarACarrito = () => {
+        let aux=inicio;
+        if (buscarItem(UNO.id)) {
+            editItem(UNO.id,count);
+            console.log(cartCount)
+            setCartCount((cartCount-aux)+count);
+        }else{
+            addItem({ ...UNO,cantidad: count })
+            setCartCount(cartCount+count);
+        }
+    };
 
     return(
         <div className="container-fluid">
@@ -34,7 +44,7 @@ const ItemDetail = ({UNO}) => {
                 </>
             ):(
                 <>
-                <Link to="/cart" onClick={cambiarEstadoCompra}>
+                <Link to="/Cart" onClick={cambiarEstadoCompra}>
                     <Button onClick={agregarACarrito} className="d-block w-50 mx-auto my-1" variant="success">Confirmar Compra</Button>
                 </Link>
                 <Button className="d-block w-50 mx-auto" onClick={cambiarEstadoCompra} variant="warning">Editar Compra</Button>

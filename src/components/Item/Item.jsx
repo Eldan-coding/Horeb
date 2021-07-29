@@ -21,7 +21,7 @@ const handleShow = () => setShow(true);
             {buscarItem(CPU.id) ?(
                 <img onClick={() => alert("Este Item esta en el carrito")} src={CPU.imagenUrl} className="card-img-top" alt="CPU"/>
             ):(
-                <Link to={"/CPU/"+CPU.id}>
+                <Link to={"/CPU/"+CPU.id+"/normal"}>
                     <img src={CPU.imagenUrl} className="card-img-top" alt="CPU"/>
                 </Link>
             )}
