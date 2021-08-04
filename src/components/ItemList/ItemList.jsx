@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import Item from '../Item/Item'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Procesadores} from '../../Items.json';
+import { database } from "../../firebase/firebase";
 
 const ItemList = () => {
     
@@ -10,25 +10,24 @@ const ItemList = () => {
     
     const [loading, setLoading] = useState(true);
 
+    const procesadores= database.collection("procesadores");
 
-    const getItems=()=>{
-        return new Promise((resolve,reject) => {
-            setTimeout(() => {
-                setLoading(false);
-                resolve(Procesadores);
-            }, 2000);
+
+    procesadores.get().then((resultado) => {
+        const auxarray=[];
+        resultado.docs.map(doc => {
+            auxarray.push({...doc.data(), id:doc.id})
         })
-    };
-
-    getItems().then((resultado) => setListaItems(resultado));
+    setListaItems(auxarray);
+    setLoading(false);
+    })
 
     return(
         <>
-        {!loading ? (
+        {listaItems.length>0 ? (
             <div className="container w-75">
                 <div className="row">
                 {listaItems.map(CPU => (
-                    
                 <div className="col-4">
                         <Item CPU={CPU} key={CPU.id}/>
                 </div>

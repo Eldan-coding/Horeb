@@ -3,7 +3,7 @@ import ItemDetail from '../ItemDetail/ItemDetail'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Modal from 'react-bootstrap/Modal';
 import { useParams } from "react-router";
-import {Procesadores} from '../../Items.json';
+import { database } from "../../firebase/firebase";
 import { CartContext } from "../../services/CartContext";
 import { Redirect } from "react-router-dom";
 
@@ -19,23 +19,24 @@ const ItemDetailContainer = () => {
     
     const [loading, setLoading] = useState(true);
 
-    const getArticulo=()=>{
-        return new Promise((resolve,reject) => {
-            setTimeout(() => {
-                setLoading(false);
-                resolve(Procesadores);
-            }, 2000);
-        })
-    };
+    const procesadores= database.collection("procesadores");
 
-    getArticulo().then((resultado) => setArticulos(resultado));
+
+    procesadores.get().then((resultado) => {
+        const auxarray=[];
+        resultado.docs.map(doc => {
+            auxarray.push({...doc.data(), id:doc.id})
+        })
+    setArticulos(auxarray);
+    })
 
     
     return(
         <>
-        {!loading ? (
+        {Articulos.length>0 ? (
         <div className="w-50 mx-auto p-5 mt-4">
                 {Articulos.map(uno => {
+    console.log(Articulos)
                             const found = cart.find(element => element.id == uno.id)
                             return id==uno.id && 
                                 <>

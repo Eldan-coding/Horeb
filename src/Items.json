@@ -1,9 +1,0 @@
-{
-    "Procesadores":
-[
-    { "id": "1", "titulo":  "Ryzen5", "descripcion": "Lorem ipsum dolor sit amet"  , "precio": "300", "imagenUrl": "/img/ryzen5.jpg"},
-    { "id": "2", "titulo":  "Ryzen7", "descripcion": "Lorem ipsum dolor sit amet"  , "precio": "450", "imagenUrl": "/img/ryzen7.jpg"},
-    { "id": "3", "titulo":  "Ryzen8", "descripcion": "Lorem ipsum dolor sit amet"  , "precio": "600", "imagenUrl": "/img/ryzen9.jpg"}
-    
-]
-}
