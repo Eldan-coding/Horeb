@@ -25,6 +25,7 @@ const ItemDetail = ({UNO, inicio}) => {
             addItem({ ...UNO,cantidad: count })
             setCartCount(cartCount+count);
         }
+        
     };
 
     return(
@@ -45,7 +46,7 @@ const ItemDetail = ({UNO, inicio}) => {
             ):(
                 <>
                 <Link to="/Cart" onClick={cambiarEstadoCompra}>
-                    <Button onClick={agregarACarrito} className="d-block w-50 mx-auto my-1" variant="success">Confirmar Compra</Button>
+                    <Button onClick={() => {agregarACarrito()}} className="d-block w-50 mx-auto my-1" variant="success">Confirmar Compra</Button>
                 </Link>
                 <Button className="d-block w-50 mx-auto" onClick={cambiarEstadoCompra} variant="warning">Editar Compra</Button>
                 </>
