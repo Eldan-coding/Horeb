@@ -9,7 +9,12 @@ const Cart = () => {
   const {cart, EliminarItem,cartCount,setCartCount,total,setCart} = useContext(CartContext);
   const [confirmado, setConfirmado] = useState(false);
 
-  const confirmarEstado = () => setConfirmado(!confirmado);
+  const [envioEstado, setEnvioEstado] = useState(true);
+
+  const confirmarEstado = () => {
+      setConfirmado(!confirmado);
+      setEnvioEstado(true);
+    }
 
   const registrar= (e) =>{
     const ordenes= database.collection("ordenes");
@@ -44,8 +49,57 @@ const Cart = () => {
         ///Si llega a haber cualquier otro error, notificamos al usuario
         alert("ERROR: " + error);
       })
-
   }
+
+  const ValidamosFormulario = () =>{
+    let nombre=document.querySelector('#name')
+    let tel=document.querySelector('#phone')
+    let tel2=document.querySelector('#phone2')
+    let corr=document.querySelector('#email')
+    let corr2=document.querySelector('#email2')
+
+    let phoneEstado;
+    let correoEstado;
+
+    if (tel.value.length!=0 && tel2.value.length!=0){
+        if(tel.value==tel2.value){
+            tel.style.border="green 1px solid";
+            tel2.style.border="green 1px solid";
+            phoneEstado=true;
+        }else{
+            tel.style.border="red 1px solid";
+            tel2.style.border="red 1px solid";
+            phoneEstado=false;
+        }
+    }else{
+        tel.style.border="";
+        tel2.style.border="";
+    }
+
+    if (corr.value.length!=0 && corr2.value.length!=0){
+        if(corr.value==corr2.value){
+            corr.style.border="green 1px solid";
+            corr2.style.border="green 1px solid";
+            correoEstado=true;
+        }else{
+            corr.style.border="red 1px solid";
+            corr2.style.border="red 1px solid";
+            correoEstado=false;
+        }
+    }else{
+        corr.style.border="";
+        corr2.style.border="";
+    }
+
+    if (nombre.value.length!=0 && correoEstado && phoneEstado){
+        setEnvioEstado(false);
+    }else{
+        setEnvioEstado(true);
+    }
+  }
+
+    
+    
     return(
         <>
         {cart.length==0 ?(
@@ -64,7 +118,7 @@ const Cart = () => {
                             <img src={item.imagenUrl} className="img-fluid rounded-start m-2" alt="..."/>
                         </div>
                         <div className="col-md-8">
-                            <div id="mini-controles" className="card-body">
+                            <div className="card-body">
                                 <h5 className="card-title">{item.titulo}</h5>
                                 <p className="card-text">{item.descripcion}</p>
                                 <p className="card-text"><small className="text-muted">{item.precio}X{item.cantidad}=${item.precio*item.cantidad}</small>{!confirmado &&<Link  to={"/CPU/"+item.id+"/editar"}>(<img src="/img/pencil.png" className="img-fluid rounded-start m-2" alt="..."/>)</Link>}</p>
@@ -83,19 +137,31 @@ const Cart = () => {
             {confirmado &&
             <div className="w-50 mx-auto border my-5 p-5 text-left">
                 <Form onSubmit={registrar}>
-                <Form.Group className="mb-3" controlId="">
+                <Form.Group className="mb-3">
                     <Form.Label>Nombre</Form.Label>
-                    <Form.Control className="text-left" type="text" placeholder="Nombre" />
+                    <Form.Control id="name" onBlur={ValidamosFormulario} className="text-left" type="text" placeholder="Nombre" />
                 </Form.Group>
-                <Form.Group className="mb-3" controlId="">
-                    <Form.Label>Numero</Form.Label>
-                    <Form.Control className="text-left"type="number" placeholder="Numero" />
+                <Form.Group className="mb-3">
+                    <Form.Label>Telefono</Form.Label>
+                    <Form.Control id="phone" onBlur={ValidamosFormulario} className="text-left" type="number" placeholder="Telefono" />
                 </Form.Group>
-                <Form.Group className="mb-3" controlId="">
+                <Form.Group className="mb-3">
+                    <Form.Label>confirmar Telefono</Form.Label>
+                    <Form.Control id="phone2" onBlur={ValidamosFormulario} className="text-left" type="number" placeholder="Confirmar Telefono" />
+                </Form.Group>
+                <Form.Group className="mb-3">
                     <Form.Label>Correo</Form.Label>
-                    <Form.Control className="text-left"type="Correo" placeholder="name@example.com" />
+                    <Form.Control id="email" onBlur={ValidamosFormulario} className="text-left" type="email" placeholder="nombre@ejemplo.com" />
                 </Form.Group>
-                    <Button type="submit" variant="info">Comprar</Button>
+                <Form.Group className="mb-3">
+                    <Form.Label>Confirmar Correo</Form.Label>
+                    <Form.Control id="email2" onBlur={ValidamosFormulario} className="text-left" type="email" placeholder="nombre@ejemplo.com" />
+                </Form.Group>
+                <Form.Group className="mb-3">
+                    <Form.Label>Total</Form.Label>
+                    <Form.Control value={total} className="text-left" type="number" disabled/>
+                </Form.Group>
+                    <Button disabled={envioEstado} id="envio" type="submit" variant="info">Comprar</Button>
                 </Form>
             </div>}
             </>

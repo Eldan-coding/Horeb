@@ -34,7 +34,7 @@ const ItemDetailContainer = () => {
         {Articulos.length>0 ? (
         <div className="w-50 mx-auto p-5 mt-4">
                 {Articulos.map(uno => {
-                        console.log(Articulos)
+                        //console.log(Articulos)
                             const found = cart.find(element => element.id == uno.id)
                             return id==uno.id && 
                                 <>

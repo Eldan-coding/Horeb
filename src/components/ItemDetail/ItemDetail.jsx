@@ -19,7 +19,7 @@ const ItemDetail = ({UNO, inicio}) => {
         let aux=inicio;
         if (buscarItem(UNO.id)) {
             editItem(UNO.id,count);
-            console.log(cartCount)
+            //console.log(cartCount)
             setCartCount((cartCount-aux)+count);
         }else{
             addItem({ ...UNO,cantidad: count })
