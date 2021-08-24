@@ -19,6 +19,10 @@ function App() {
               <ItemListContainer greeting="Bienvenido a nuestro E-commerce"/>
             </Route>
             
+            <Route exact path="/Categoria/:catid">
+              <ItemListContainer greeting="Bienvenido a nuestro E-commerce"/>
+            </Route>
+            
             <Route exact path="/CPU/:id/:tipo">
               <ItemDetailContainer/>
             </Route>

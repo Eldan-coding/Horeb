@@ -10,10 +10,10 @@ const NavBar = () => {
                 <h1>Horeb</h1>
             </Link>
             <ul>
-                <a href="#"><li>Inicio</li></a>
-                <a href="#"><li>Productos</li></a>
-                <a href="#"><li>Nosotros</li></a>
-                <a href="#"><li>Contactenos</li></a>
+                <Link to="/Categoria/CPU"><li>Procesadores</li></Link>
+                <Link to="/Categoria/RAM"><li>Memorias RAM</li></Link>
+                <Link to="/Categoria/GPU"><li>Tarjetas De Video</li></Link>
+                <Link to="/Categoria/BOARD"><li>Tarjetas Madres</li></Link>
             </ul>
             
             <Link to="/Cart">

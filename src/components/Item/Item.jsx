@@ -15,8 +15,9 @@ const [show, setShow] = useState(false);
 
 const handleClose = () => setShow(false);
 const handleShow = () => setShow(true);
+
     return(
-            <div className="card">
+            <div className="card mb-4">
 
             {buscarItem(CPU.id) ?(
                 <img onClick={() => alert("Este Item esta en el carrito")} src={CPU.imagenUrl} className="card-img-top" alt="CPU"/>

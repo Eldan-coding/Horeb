@@ -9,11 +9,7 @@ const Cart = () => {
   const {cart, EliminarItem,cartCount,setCartCount,total,setCart} = useContext(CartContext);
   const [confirmado, setConfirmado] = useState(false);
 
-  
-
   const confirmarEstado = () => setConfirmado(!confirmado);
-
-
 
   const registrar= (e) =>{
     const ordenes= database.collection("ordenes");
@@ -50,7 +46,6 @@ const Cart = () => {
       })
 
   }
-
     return(
         <>
         {cart.length==0 ?(
@@ -69,19 +64,22 @@ const Cart = () => {
                             <img src={item.imagenUrl} className="img-fluid rounded-start m-2" alt="..."/>
                         </div>
                         <div className="col-md-8">
-                            <div className="card-body">
+                            <div id="mini-controles" className="card-body">
                                 <h5 className="card-title">{item.titulo}</h5>
                                 <p className="card-text">{item.descripcion}</p>
-                                <p className="card-text"><small className="text-muted">{item.precio}X{item.cantidad}=${item.precio*item.cantidad}</small><Link to={"/CPU/"+item.id+"/editar"}>(<img src="/img/pencil.png" className="img-fluid rounded-start m-2" alt="..."/>)</Link></p>
-                                <Button onClick={() => {EliminarItem(item.id);setCartCount(cartCount-item.cantidad);setConfirmado(false)}} variant="outline-danger">Eliminar</Button>
+                                <p className="card-text"><small className="text-muted">{item.precio}X{item.cantidad}=${item.precio*item.cantidad}</small>{!confirmado &&<Link  to={"/CPU/"+item.id+"/editar"}>(<img src="/img/pencil.png" className="img-fluid rounded-start m-2" alt="..."/>)</Link>}</p>
+                                {!confirmado && <Button onClick={() => {EliminarItem(item.id);setCartCount(cartCount-item.cantidad);}} variant="outline-danger">Eliminar</Button>
+                                }
                             </div>
                         </div>
                     </div>
                 </div>
                 ))} 
-        <Button onClick={confirmarEstado} variant="outline-success">Confirmar Compra</Button>
-            </>
-        )}
+                {confirmado ?(
+                    <Button onClick={confirmarEstado} variant="outline-success">Editar Compra</Button>
+                ):(
+                    <Button onClick={confirmarEstado} variant="outline-success">Confirmar Compra</Button>
+                )}
             {confirmado &&
             <div className="w-50 mx-auto border my-5 p-5 text-left">
                 <Form onSubmit={registrar}>
@@ -100,6 +98,8 @@ const Cart = () => {
                     <Button type="submit" variant="info">Comprar</Button>
                 </Form>
             </div>}
+            </>
+        )}
         </>
     );
 };

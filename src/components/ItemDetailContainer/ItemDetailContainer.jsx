@@ -1,4 +1,4 @@
-import React, {useContext, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import ItemDetail from '../ItemDetail/ItemDetail'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Modal from 'react-bootstrap/Modal';
@@ -16,27 +16,25 @@ const ItemDetailContainer = () => {
     const {tipo} = useParams();
     const [Articulos, setArticulos] = useState([]);
 
-    
-    const [loading, setLoading] = useState(true);
-
-    const procesadores= database.collection("procesadores");
+    const productos= database.collection("productos");
 
 
-    procesadores.get().then((resultado) => {
-        const auxarray=[];
-        resultado.docs.map(doc => {
-            auxarray.push({...doc.data(), id:doc.id})
+    useEffect(() => {
+        productos.get().then((resultado) => {
+            const auxarray=[];
+            resultado.docs.map(doc => {
+                auxarray.push({...doc.data(), id:doc.id})
+            })
+        setArticulos(auxarray);
         })
-    setArticulos(auxarray);
-    })
-
+    }, []);
     
     return(
         <>
         {Articulos.length>0 ? (
         <div className="w-50 mx-auto p-5 mt-4">
                 {Articulos.map(uno => {
-    console.log(Articulos)
+                        console.log(Articulos)
                             const found = cart.find(element => element.id == uno.id)
                             return id==uno.id && 
                                 <>
@@ -47,7 +45,7 @@ const ItemDetailContainer = () => {
                                         </>
                                     ):(
                                         <>
-                                        {alert("Articulo ya incluido en el carrito")}
+                                        {alert("Articulo ya incluido en el carrito ")}
                                         <Redirect to="/"/>
                                         </>
                                     )
