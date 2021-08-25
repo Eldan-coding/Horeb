@@ -4,39 +4,8 @@
     box-sizing: border-box;
 }
 
-.mynav{
-    padding-left: 1rem;
-    padding-right: 1rem;
-
-    width: 100%;
-    border-radius: 16px;
-    background-color: #3d7ed4;
-
-    border: 1px black solid;
-
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-
-    height: 5rem;
+.cate{
+    color: black !important;
 }
 
-h1{
-    color: azure !important;
-}
-
-ul{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
-    width: 60%;
-
-    list-style: none;
-}
-
-li{
-    color: azure !important;
-}
 

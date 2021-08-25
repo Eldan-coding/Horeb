@@ -31,19 +31,19 @@ const handleShow = () => setShow(true);
                 <h5 className="card-title text-danger">{CPU.titulo}</h5>
                 <p className="card-text">{CPU.descripcion}</p>
                 <h5 className="card-title text-info">${CPU.precio}</h5>
-            <Button variant="primary" onClick={handleShow}>
+            {/* <Button variant="primary" onClick={handleShow}>
                 Comprar
             </Button>
                 
 
             <Modal show={show} onHide={handleClose}>
-                {/* <ItemDetailContainer CPU={CPU}/> */}
+                <ItemDetailContainer CPU={CPU}/> 
                 <Modal.Footer>
                 <Button variant="secondary" onClick={handleClose}>
                     Cerrar
                 </Button>
                 </Modal.Footer>
-            </Modal>
+            </Modal> */}
             </div>
             </div>
     );

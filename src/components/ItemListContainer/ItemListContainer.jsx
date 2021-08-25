@@ -12,7 +12,7 @@ const ItemListContainer = (props) => {
 
   return(
         <div className="mainContainer">
-            <p>{props.greeting}</p>
+            <p className="bienve">{props.greeting}</p>
           {/*     {console.log(cart)}*/}
             <ItemList cate={catid}/>
         </div>

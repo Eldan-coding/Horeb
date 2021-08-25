@@ -31,10 +31,10 @@ const ItemDetail = ({UNO, inicio}) => {
     return(
         <div className="container-fluid">
         <div className="row align-items-center">
-            <div className='col-6'>
+            <div className='col-12 col-md-6'>
                 <img src={UNO.imagenUrl} className="w-100" alt="CPU"/>
             </div>
-            <div className='col-6 text-center'>
+            <div className='col-12 col-md-6 text-center'>
             <h5 className="card-title text-danger">{UNO.titulo}</h5>
                 <p>{UNO.descripcion}</p>
                 <strong>${UNO.precio}</strong>
@@ -46,9 +46,9 @@ const ItemDetail = ({UNO, inicio}) => {
             ):(
                 <>
                 <Link to="/Cart" onClick={cambiarEstadoCompra}>
-                    <Button onClick={() => {agregarACarrito()}} className="d-block w-50 mx-auto my-1" variant="success">Confirmar Compra</Button>
+                    <Button onClick={() => {agregarACarrito()}} className="d-block w-75 mx-auto my-1" variant="success">Confirmar Compra</Button>
                 </Link>
-                <Button className="d-block w-50 mx-auto" onClick={cambiarEstadoCompra} variant="warning">Editar Compra</Button>
+                <Button className="d-block w-75 mx-auto" onClick={cambiarEstadoCompra} variant="warning">Editar Compra</Button>
                 </>
             )}
 

@@ -1,0 +1,9 @@
+.cartresponsive{
+    width: 90%;
+}
+
+@media (min-width: 768px) {
+    .cartresponsive{
+        width: 50%;
+    }
+}

@@ -32,7 +32,7 @@ const ItemList = ({cate}) => {
                 {cate ? (
                 listaItems.map(CPU => (
                     cate==CPU.categoria ? (
-                        <div className="col-4">
+                        <div className="col-12 col-sm-6 col-md-4">
                                 <Item CPU={CPU} key={CPU.id}/>
                         </div>
                     ):(
@@ -43,7 +43,7 @@ const ItemList = ({cate}) => {
 
                 ):(
                     listaItems.map(CPU => (
-                        <div className="col-4">
+                        <div className="col-12 col-sm-6 col-md-4">
                             <Item CPU={CPU} key={CPU.id}/>
                         </div>
                     ))

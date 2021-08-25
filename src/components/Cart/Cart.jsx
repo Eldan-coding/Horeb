@@ -1,4 +1,5 @@
 import React, { useState, useContext } from "react";
+import './Cart.css';
 import { CartContext } from "../../services/CartContext";
 import { Button, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
@@ -25,7 +26,7 @@ const Cart = () => {
     const buyer = {
         name: e.target[0].value,
         phone: e.target[1].value,
-        email: e.target[2].value
+        email: e.target[3].value
     };
 
     const orden = {
@@ -112,7 +113,7 @@ const Cart = () => {
         ):(    
             <>
             {cart.map(item => ( 
-                <div className="card mb-3 w-50 mt-5 mx-auto">
+                <div className="cartresponsive card mb-3 mt-5 mx-auto">
                     <div className="row g-0 align-items-center">
                         <div className="col-md-4 p-3">
                             <img src={item.imagenUrl} className="img-fluid rounded-start m-2" alt="..."/>
@@ -135,7 +136,7 @@ const Cart = () => {
                     <Button onClick={confirmarEstado} variant="outline-success">Confirmar Compra</Button>
                 )}
             {confirmado &&
-            <div className="w-50 mx-auto border my-5 p-5 text-left">
+            <div className="cartresponsive mx-auto border my-5 p-2 p-md-5 text-left">
                 <Form onSubmit={registrar}>
                 <Form.Group className="mb-3">
                     <Form.Label>Nombre</Form.Label>
