@@ -7,22 +7,18 @@ const ItemList = ({cate}) => {
     
     const [listaItems, setListaItems] = useState([]);
 
-    
-    const [loading, setLoading] = useState(true);
-
     const productos= database.collection("productos");
 
 
     useEffect(() => {
         productos.get().then((resultado) => {
             const auxarray=[];
-            resultado.docs.map(doc => {
+            resultado.docs.forEach(doc => {// eslint-disable-next-line
                 auxarray.push({...doc.data(), id:doc.id})
             })
         setListaItems(auxarray);
-        setLoading(false);
         })
-      }, []);
+      }, [productos]);
 
     return(
         <>
@@ -31,7 +27,7 @@ const ItemList = ({cate}) => {
                 <div className="row">
                 {cate ? (
                 listaItems.map(CPU => (
-                    cate==CPU.categoria ? (
+                    cate===CPU.categoria ? (
                         <div className="col-12 col-sm-6 col-md-4">
                                 <Item CPU={CPU} key={CPU.id}/>
                         </div>

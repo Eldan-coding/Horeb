@@ -1,12 +1,12 @@
-import React, { useContext } from "react";
+import React from "react";
 import './ItemListContainer.css';
 import ItemList from '../ItemList/ItemList';
-import { CartContext } from "../../services/CartContext";
+//import { CartContext } from "../../services/CartContext";
 import { useParams } from "react-router-dom";
 
 const ItemListContainer = (props) => {
     
-  const {cart} = useContext(CartContext);
+  //const {cart} = useContext(CartContext);
   const {catid} = useParams();
 
 

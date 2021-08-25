@@ -1,5 +1,4 @@
 import React, {createContext, useState} from "react";
-import Cart from "../components/Cart/Cart";
 
 export const CartContext= createContext();
 
@@ -10,7 +9,7 @@ export const DataProvider = ({children}) => {
     const [total, setTotal] = useState(0);
 
     const buscarItem = (id) => {
-        const found = cart.find(element => element.id == id);
+        const found = cart.find(element => element.id === id);
         if (found){
             return true;
         }else{
@@ -22,7 +21,7 @@ export const DataProvider = ({children}) => {
         let aux=[];
         let auxtotal=0;
         for (const item of cart) {
-            if (id!=item.id){
+            if (id!==item.id){
                 aux.push(item);
                 auxtotal=auxtotal+(item.precio*item.cantidad)
             }
@@ -44,7 +43,7 @@ export const DataProvider = ({children}) => {
     const editItem = (id,quan) => {
         let auxtotal=0;
         for (const item of cart) {
-            if (id==item.id){
+            if (id===item.id){
                 item.cantidad=quan;
             }
                 auxtotal=auxtotal+(item.precio*item.cantidad)

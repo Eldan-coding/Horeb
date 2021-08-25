@@ -1,8 +1,8 @@
-import React, {useContext, useState} from "react";
+import React, {useContext} from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import ItemDetailContainer from '../ItemDetailContainer/ItemDetailContainer';
+/* import ItemDetailContainer from '../ItemDetailContainer/ItemDetailContainer';
 import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
+import Modal from 'react-bootstrap/Modal'; */
 import { Link } from 'react-router-dom';
 import { CartContext } from "../../services/CartContext";
 
@@ -11,10 +11,10 @@ const Item = ({CPU}) => {
 const {buscarItem} = useContext(CartContext);
 
 
-const [show, setShow] = useState(false);
+/* const [show, setShow] = useState(false);
 
 const handleClose = () => setShow(false);
-const handleShow = () => setShow(true);
+const handleShow = () => setShow(true); */
 
     return(
             <div className="card mb-4">

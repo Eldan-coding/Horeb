@@ -2,7 +2,7 @@
 
 *HOREB* es un e-commerce, para la ventas de productos electronicos para computadores especializados en gaming. 
 
-version On-line ![Demonstration](https://imgur.com/MyLaGN8)
+Demostracion:(https://imgur.com/MyLaGN8)
 
 ### LIBRERIAS USADAS
 
@@ -17,7 +17,7 @@ Para simplemente interactuar con el proyecto, accede a la version online desde a
 
 Para interactuar localmente sigue estos:
 
-- Clona este repositorio
+- Clona este repositorio: (https://github.com/Eldan-coding/Horeb)
 - Desde la terminal de repositorio
 - ejecuta: **npm i**
 - Despues que termine, usamos **npm start**

@@ -21,7 +21,7 @@ const ItemCount = ({inicio, stock, cambiarCount, count}) => {
         }else if (auxInicio===auxstock && auxstock===1){
             i=0;
             d=0;
-        }else if(auxInicio==1){
+        }else if(auxInicio===1){
             i=0;
         }
     }
@@ -31,24 +31,24 @@ const ItemCount = ({inicio, stock, cambiarCount, count}) => {
     const [swRemove, setSwremove] = useState(i);    
 
     const validarAdd = () =>{
-        if(count+1==auxstock) setSwAdd(0);
+        if(count+1===auxstock) setSwAdd(0);
         if(count+1>1) setSwremove(1);
     }
 
     const validarRemove = () =>{
-        if(count-1==1) setSwremove(0);
+        if(count-1===1) setSwremove(0);
         if(count-1<auxstock) setSwAdd(1);
     }
 
     const addOne = () => {
-        if(swAdd==1){
+        if(swAdd===1){
             cambiarCount(count+1);
             validarAdd();
         }
     }
 
     const removeOne = () => {
-        if(swRemove==1){
+        if(swRemove===1){
             cambiarCount(parseInt(count)-1);
             validarRemove();
         }

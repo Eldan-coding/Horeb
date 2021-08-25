@@ -1,7 +1,7 @@
 import React, {useContext, useEffect, useState} from "react";
 import ItemDetail from '../ItemDetail/ItemDetail'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Modal from 'react-bootstrap/Modal';
+//import Modal from 'react-bootstrap/Modal';
 import { useParams } from "react-router";
 import { database } from "../../firebase/firebase";
 import { CartContext } from "../../services/CartContext";
@@ -22,12 +22,12 @@ const ItemDetailContainer = () => {
     useEffect(() => {
         productos.get().then((resultado) => {
             const auxarray=[];
-            resultado.docs.map(doc => {
+            resultado.docs.forEach(doc => {
                 auxarray.push({...doc.data(), id:doc.id})
             })
         setArticulos(auxarray);
         })
-    }, []);
+    }, [productos]);
     
     return(
         <>
@@ -35,11 +35,11 @@ const ItemDetailContainer = () => {
         <div className="w-75 mx-auto p-5 mt-4">
                 {Articulos.map(uno => {
                         //console.log(Articulos)
-                            const found = cart.find(element => element.id == uno.id)
-                            return id==uno.id && 
+                            const found = cart.find(element => element.id === uno.id)
+                            return id===uno.id && 
                                 <>
                                 {buscarItem(uno.id)  ? (
-                                    tipo=="editar" ? (
+                                    tipo==="editar" ? (  
                                         <>
                                         <ItemDetail inicio={found.cantidad} UNO={uno} key={uno.id}/>
                                         </>

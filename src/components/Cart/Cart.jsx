@@ -62,8 +62,8 @@ const Cart = () => {
     let phoneEstado;
     let correoEstado;
 
-    if (tel.value.length!=0 && tel2.value.length!=0){
-        if(tel.value==tel2.value){
+    if (tel.value.length!==0 && tel2.value.length!==0){
+        if(tel.value===tel2.value){
             tel.style.border="green 1px solid";
             tel2.style.border="green 1px solid";
             phoneEstado=true;
@@ -77,8 +77,8 @@ const Cart = () => {
         tel2.style.border="";
     }
 
-    if (corr.value.length!=0 && corr2.value.length!=0){
-        if(corr.value==corr2.value){
+    if (corr.value.length!==0 && corr2.value.length!==0){
+        if(corr.value===corr2.value){
             corr.style.border="green 1px solid";
             corr2.style.border="green 1px solid";
             correoEstado=true;
@@ -92,7 +92,7 @@ const Cart = () => {
         corr2.style.border="";
     }
 
-    if (nombre.value.length!=0 && correoEstado && phoneEstado){
+    if (nombre.value.length!==0 && correoEstado && phoneEstado){
         setEnvioEstado(false);
     }else{
         setEnvioEstado(true);
@@ -103,7 +103,7 @@ const Cart = () => {
     
     return(
         <>
-        {cart.length==0 ?(
+        {cart.length===0 ?(
             <>
             <h1 className="mt-5 text-dark">No hay articulos en el carrito</h1>
             <Link to="/">
