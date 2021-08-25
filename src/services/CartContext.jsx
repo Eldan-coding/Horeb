@@ -4,11 +4,11 @@ export const CartContext= createContext();
 
 export const DataProvider = ({children}) => {
 
-    const [cart, setCart] = useState([]);
-    const [cartCount, setCartCount] = useState(0);
-    const [total, setTotal] = useState(0);
+    const [cart, setCart] = useState([]);//UseState para manejar los productos del carrito
+    const [cartCount, setCartCount] = useState(0);//UseState nos ayudara a llevar el conteo de la cantidad de Items
+    const [total, setTotal] = useState(0);//UseState para mantener el valor total de todos los productos
 
-    const buscarItem = (id) => {
+    const buscarItem = (id) => {//Muchas veces requerimos revisar que un producto este en el carro, esta funcion nos ayudara.
         const found = cart.find(element => element.id === id);
         if (found){
             return true;

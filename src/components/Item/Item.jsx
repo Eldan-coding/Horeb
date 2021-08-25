@@ -12,7 +12,6 @@ const {buscarItem} = useContext(CartContext);
 
 
 /* const [show, setShow] = useState(false);
-
 const handleClose = () => setShow(false);
 const handleShow = () => setShow(true); */
 
@@ -22,7 +21,7 @@ const handleShow = () => setShow(true); */
             {buscarItem(CPU.id) ?(
                 <img onClick={() => alert("Este Item esta en el carrito")} src={CPU.imagenUrl} className="card-img-top" alt="CPU"/>
             ):(
-                <Link to={"/CPU/"+CPU.id+"/normal"}>
+                <Link to={"/CPU/"+CPU.id+"/normal"}>{/* normal quiere decir una comprar comun y corriente */}
                     <img src={CPU.imagenUrl} className="card-img-top" alt="CPU"/>
                 </Link>
             )}
@@ -35,7 +34,6 @@ const handleShow = () => setShow(true); */
                 Comprar
             </Button>
                 
-
             <Modal show={show} onHide={handleClose}>
                 <ItemDetailContainer CPU={CPU}/> 
                 <Modal.Footer>

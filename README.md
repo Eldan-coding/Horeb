@@ -13,7 +13,7 @@ Demostracion:(https://imgur.com/MyLaGN8)
 
 ### COMO PREPARAR EL PROYECTO
 
-Para simplemente interactuar con el proyecto, accede a la version online desde aqui: [deployed version]()
+Para simplemente interactuar con el proyecto, accede a la version online desde aqui: [deployed version](https://youthful-clarke-8d8d78.netlify.app/)
 
 Para interactuar localmente sigue estos:
 

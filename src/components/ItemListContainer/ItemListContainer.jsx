@@ -7,7 +7,7 @@ import { useParams } from "react-router-dom";
 const ItemListContainer = (props) => {
     
   //const {cart} = useContext(CartContext);
-  const {catid} = useParams();
+  const {catid} = useParams();//Lo usamos para filtar nuestro productos
 
 
   return(

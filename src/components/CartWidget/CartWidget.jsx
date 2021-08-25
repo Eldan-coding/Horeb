@@ -4,7 +4,7 @@ import cart from '../../imagenes/shopping-cart.png';
 import { CartContext } from "../../services/CartContext";
 
 const CartWidget = () => {
-    
+    //From CartContext
     const {cartCount} = useContext(CartContext);
 
     return(

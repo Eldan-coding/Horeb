@@ -5,16 +5,16 @@ import { database } from "../../firebase/firebase";
 
 const ItemList = ({cate}) => {
     
-    const [listaItems, setListaItems] = useState([]);
+    const [listaItems, setListaItems] = useState([]);//contendra los productos obtenidos de firebase
 
-    const productos= database.collection("productos");
+    const productos= database.collection("productos");//guardamos la collection desde el firebase
 
 
     useEffect(() => {
         productos.get().then((resultado) => {
             const auxarray=[];
-            resultado.docs.forEach(doc => {// eslint-disable-next-line
-                auxarray.push({...doc.data(), id:doc.id})
+            resultado.docs.forEach(doc => {
+                auxarray.push({...doc.data(), id:doc.id})//Agregamos el ID a un producto
             })
         setListaItems(auxarray);
         })
@@ -25,9 +25,9 @@ const ItemList = ({cate}) => {
         {listaItems.length>0 ? (
             <div className="container w-75">
                 <div className="row">
-                {cate ? (
+                {cate ? (//si existe la catergoria en la URL
                 listaItems.map(CPU => (
-                    cate===CPU.categoria ? (
+                    cate===CPU.categoria ? (//depende la categoria lo filtramos
                         <div className="col-12 col-sm-6 col-md-4">
                                 <Item CPU={CPU} key={CPU.id}/>
                         </div>
@@ -37,7 +37,7 @@ const ItemList = ({cate}) => {
                     )
                 ))
 
-                ):(
+                ):(//si no existe la categoria simplemente muestra todos los items
                     listaItems.map(CPU => (
                         <div className="col-12 col-sm-6 col-md-4">
                             <Item CPU={CPU} key={CPU.id}/>

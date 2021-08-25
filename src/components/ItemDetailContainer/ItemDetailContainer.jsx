@@ -11,19 +11,21 @@ const ItemDetailContainer = () => {
     //From Cartcontext:
     const {buscarItem,cart} = useContext(CartContext);
 
-
+    //From URL:
     const {id} = useParams();
     const {tipo} = useParams();
-    const [Articulos, setArticulos] = useState([]);
 
-    const productos= database.collection("productos");
+    
+    const [Articulos, setArticulos] = useState([]);//contendra los productos obtenidos de firebase
+
+    const productos= database.collection("productos");//guardamos la collection desde el firebase
 
 
     useEffect(() => {
         productos.get().then((resultado) => {
             const auxarray=[];
             resultado.docs.forEach(doc => {
-                auxarray.push({...doc.data(), id:doc.id})
+                auxarray.push({...doc.data(), id:doc.id})//Agregamos el ID a un producto
             })
         setArticulos(auxarray);
         })
@@ -39,13 +41,13 @@ const ItemDetailContainer = () => {
                             return id===uno.id && 
                                 <>
                                 {buscarItem(uno.id)  ? (
-                                    tipo==="editar" ? (  
+                                    tipo==="editar" ? (//verificamos que se edite
                                         <>
                                         <ItemDetail inicio={found.cantidad} UNO={uno} key={uno.id}/>
                                         </>
-                                    ):(
+                                    ):(//si no se edita asumimos que es normal pero ya el producto esta en el carrito
                                         <>
-                                        {alert("Articulo ya incluido en el carrito ")}
+                                        {alert("Articulo ya esta incluido en el carrito ")}
                                         <Redirect to="/"/>
                                         </>
                                     )

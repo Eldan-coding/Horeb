@@ -19,15 +19,15 @@ function App() {
               <ItemListContainer greeting="Bienvenido a nuestro E-commerce"/>
             </Route>
             
-            <Route exact path="/Categoria/:catid">
+            <Route exact path="/Categoria/:catid">{/* filtramos los productos por diferentes categorias (CPU, GPU, RAM, BOARD) */}
               <ItemListContainer greeting="Bienvenido a nuestro E-commerce"/>
             </Route>
             
-            <Route exact path="/CPU/:id/:tipo">
+            <Route exact path="/CPU/:id/:tipo">{/* Llevamos al cliente a el producto seleccionado para una posible compra o editar la misma*/}
               <ItemDetailContainer/>
             </Route>
 
-            <Route exact path="/Cart">
+            <Route exact path="/Cart">{/* Vamos al carrito */}
               <Cart/>
             </Route>
           </Switch>
